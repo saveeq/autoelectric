@@ -375,7 +375,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("../img/bg-pattern.svg") repeat;
+  background: url("../assets/img/bg-pattern.svg") repeat;
   z-index: -1;
 }
 
@@ -544,7 +544,7 @@ svg * {
 
 .hero {
   height: 100vh;
-  background: url(/src/assets/img/bg-main-section.webp) no-repeat center center/cover;
+  background: url('../assets/img/bg-main-section.webp') no-repeat center center/cover;
   position: relative;
   z-index: 3;
   min-width: 100%;
@@ -1877,7 +1877,7 @@ svg * {
 }
 
 .store {
-  background: url(/src/assets/img/store-bg.png) no-repeat center center/cover;
+  background: url('/src/assets/img/store-bg.png') no-repeat center center/cover;
   width: 100%;
   padding-block: 1.5rem;
 }
