@@ -1,0 +1,57 @@
+@use "helpers" as *;
+
+body {
+  @include fluid-text(20, 14);
+  font-family: var(--font-family-primary);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../img/bg-pattern.svg") repeat;
+  z-index: -1;
+}
+
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition: var(--transition-duration);
+}
+
+:focus-visible {
+  outline: rem(2) dashed var(--lavender-color);
+  outline-offset: rem(4);
+  transition-duration: 0s !important;
+}
+
+.main {
+  flex: 1 1 0%;
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: rem(100);
+}
+
+.section-title {
+  font-family: var(--font-family-accent);
+  font-size: rem(28);
+  font-weight: 700;
+  color: var(--night-color);
+  line-height: 110%;
+  text-align: center;
+  @include tablet-above {
+    font-size: rem(32);
+    max-width: 85%;
+  }
+  @include laptop-above {
+    font-size: rem(36);
+  } 
+}

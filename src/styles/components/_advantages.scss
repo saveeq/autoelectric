@@ -1,0 +1,205 @@
+@use "../helpers" as *;
+
+.advantages {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: rem(24);
+  }
+
+  &__description {
+    font-size: rem(18);
+    font-weight: 300;
+    color: var(--night-color);
+    text-align: center;
+    max-width: 100%;
+    @include tablet-above {
+      font-size: rem(24);
+      max-width: 70%;
+    }
+    @include laptop-above {
+      font-size: rem(28);
+      max-width: 70%;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    max-width: 100%;
+
+    @include mobile-above {
+      max-width: 80%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    @include laptop-above {
+      max-width: 80%;
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      gap: rem(24);
+      justify-content: space-between;
+
+    }
+  }
+
+  &__item {
+    perspective: 1000px;
+    
+
+    &--gray {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--platinum-color);
+      color: var(--night-color);
+      padding: rem(20);
+      box-shadow: 0 0rem rem(8) rem(2) rgba(23, 30, 53, 0.4);
+
+    }
+    &--gray1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--platinum-color);
+      color: var(--night-color);
+      padding: rem(20);
+      box-shadow: 0 0rem rem(8) rem(2) rgba(23, 30, 53, 0.4);
+
+    }
+
+    &-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      cursor: pointer;
+      min-height: rem(250);
+      
+
+
+      &.is-flipped {
+        transform: rotateY(180deg);
+      }
+    }
+
+    &-back,
+    &-front {
+      border-radius: rem(10);
+      padding: rem(20);
+      position: absolute;
+      inset: 0;
+      min-height: rem(250);
+      display: flex;
+      flex-direction: column;
+      gap: rem(24);
+      line-height: 110%;
+      justify-content: center;
+      align-items: center;
+      backface-visibility: hidden;
+      font-size: rem(18);
+      font-weight: bold;
+      color: #fff;
+      box-shadow: 0 0rem rem(8) rem(2) rgba(23, 30, 53, 0.4);
+      
+
+    }
+
+    &-back {
+      &--brown {
+        background-color: var(--cafe-noir-color);
+      }
+      &--lavender {
+        background-color: var(--lavender-color);
+        color: var(--cafe-noir-color);
+      }
+    }
+
+    &-front {
+      background-color: var(--cafe-noir-color);
+      color: var(--white-color);
+      transform: rotateY(180deg);
+
+      &--lavender {
+        background-color: var(--lavender-color);
+        color: var(--cafe-noir-color);
+      }
+      &--brown {
+        background-color: var(--cafe-noir-color);
+        color: var(--white-color);
+      }
+    }
+
+    
+    &--gray {
+      background-color: var(--platinum-color);
+      border-radius: rem(10);
+      color: var(--night-color);
+    }
+    &--gray1 {
+      background-color: var(--platinum-color);
+      color: var(--night-color);
+      border-radius: rem(10);
+    }
+
+    
+
+    &-icon {
+      width: rem(80);
+      height: rem(80);
+
+      @include tablet-above {
+        width: rem(100);
+        height: rem(100);
+      }
+      @include laptop-above {
+        width: rem(120);
+        height: rem(120);
+      }
+    }
+    &-description {
+      font-size: rem(18);
+      text-align: center;
+      font-weight: 400;
+      min-height: rem(50);
+      display: flex;
+      line-height: 110%;
+      align-items: center;
+      justify-content: center;
+
+      font-family: var(--font-family-accent);
+      @include tablet-above {
+        font-size: rem(24);
+      }
+      @include laptop-above {
+        font-size: rem(28);
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes reverse-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}

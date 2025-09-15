@@ -1,0 +1,76 @@
+@use "../helpers" as *;
+
+.hero {
+  height: 100vh;
+  background: url(/src/assets/img/bg-main-section.webp) no-repeat center center / cover;
+  position: relative;
+  z-index: 3;
+  min-width: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: rem(24);
+  }
+
+  &__title {
+    font-family: var(--font-family-accent);
+    font-size: fluid(48, 36);
+    font-weight: 700;
+    color: var(--white-color);
+    line-height: 110%;
+    text-align: center;
+    @include tablet-above {
+      font-size: rem(48);
+      max-width: 60%;
+    }
+    @include laptop-above {
+      font-size: rem(64);
+      max-width: 60%;
+    }
+  }
+
+  &__description {
+    font-size: rem(24);
+    font-weight: 500;
+    color: var(--platinum-color);
+    text-align: center;
+    @include tablet-above {
+      font-size: rem(32);
+      max-width: 80%;
+    }
+    @include laptop-above {
+      font-size: rem(36);
+    }
+  }
+
+  &__button {
+    font-size: rem(32);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white-color);
+    line-height: 110%;
+    text-decoration: none;
+    border-radius: rem(10);
+    border: rem(1) solid var(--lavender-color);
+    background-color: var(--true-blue-color-opacity);
+    padding: rem(10) rem(24);
+    transition: var(--transition-duration);
+    @include tablet-above {
+      font-size: rem(32);
+    }
+    @include laptop-above {
+      font-size: rem(40);
+    }
+
+    &:hover {
+      background-color: var(--true-blue-color);
+      transform: translateY(-0.25rem);
+      box-shadow: 0 0rem 1rem 0.25rem rgba(197, 211, 252, 0.25);
+    }
+  }
+}

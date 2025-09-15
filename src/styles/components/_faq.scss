@@ -1,0 +1,215 @@
+@use "../helpers" as *;
+
+.faq {
+  width: 100%;
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: rem(24);
+
+    @include tablet-above {
+      max-width: 60%;
+      margin: 0 auto;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: rem(24);
+  }
+
+  &__item {
+    background: #ffffff;
+    border-radius: rem(10);
+    box-shadow: 0 0rem rem(4) rem(2) rgba(23, 30, 53, 0.4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    @include hover {
+      box-shadow: 0 0rem rem(8) rem(2) rgba(23, 30, 53, 0.4);
+      transform: translateY(rem(-2));
+    }
+  }
+
+  &__question {
+    width: 100%;
+    padding: rem(24) rem(32);
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+
+    @include hover {
+      background: #f8f9fa;
+    }
+
+    @include tablet {
+      padding: rem(20) rem(24);
+    }
+
+    @include mobile {
+      padding: rem(16) rem(20);
+    }
+  }
+
+  &__question-text {
+    font-size: rem(24);
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 110%;
+    flex: 1;
+    margin-right: rem(16);
+
+    @include tablet-above {
+      font-size: rem(26);
+    }
+    @include laptop-above {
+      font-size: rem(28);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(32);
+    height: rem(32);
+    border-radius: 50%;
+    background: #3e65a5;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+
+    @include tablet {
+      width: rem(28);
+      height: rem(28);
+    }
+
+    @include mobile {
+      width: rem(24);
+      height: rem(24);
+    }
+  }
+
+  &__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: #f8f9fa;
+    border-radius: rem(10);
+  }
+
+  &__answer-content {
+    padding: rem(32) rem(24);
+    border-radius: rem(10);
+
+    @include tablet {
+      padding: rem(24) rem(20);
+    }
+
+    @include mobile {
+      padding: rem(20) rem(16);
+    }
+  }
+
+  &__answer-content p {
+    font-size: rem(18);
+    line-height: 110%;
+    color: #5a6c7d;
+    margin: 0;
+
+    @include tablet-above {
+      font-size: rem(20);
+    }
+    @include laptop-above {
+      font-size: rem(24);
+    }
+  }
+
+  // Активное состояние
+  &__item--active {
+    .faq__question {
+      background: #f8f9fa;
+    }
+
+    .faq__icon {
+      background: #2c3e50;
+      transform: rotate(180deg);
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .faq__answer {
+      max-height: rem(200);
+      padding-top: 0;
+    }
+  }
+
+  // Анимация для плавного открытия
+  &__item--opening {
+    .faq__answer {
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+  }
+
+  // Адаптивность для отступов секции
+  @include tablet {
+    padding: rem(60) 0;
+  }
+
+  @include mobile {
+    padding: rem(40) 0;
+  }
+}
+
+// Дополнительные стили для улучшения UX
+.faq__item {
+  // Эффект при наведении на весь элемент
+  @include hover {
+    .faq__question {
+      background: #f8f9fa;
+    }
+  }
+
+  // Стили для активного элемента
+  &.faq__item--active {
+    .faq__question {
+      background: #e3f2fd;
+      border-bottom: 1px solid #e0e0e0;
+    }
+  }
+
+  // Анимация появления элементов при скролле
+  opacity: 0;
+  transform: translateY(rem(20));
+  animation: fadeInUp 0.6s ease forwards;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

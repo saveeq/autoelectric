@@ -1,0 +1,27 @@
+@use "helpers" as *;
+
+:root {
+  --night-color: #0A090C;
+  --platinum-color: #E5E5E5;
+  --true-blue-color: #3E65A5;
+  --true-blue-color-opacity: rgba(137, 182, 255, 0.61);
+  --cafe-noir-color: #382B10;
+  --cafe-noir-color-opacity: rgba(56, 43, 16, 0.705);
+  --lavender-color: #CBD7EB;
+  --lavender-color-opacity: rgba(203, 215, 235, 0.705);
+  --white-color: #FFFFFF;
+
+
+  --font-family-primary: "Roboto", sans-serif;
+  --font-family-accent: "Montserrat", sans-serif;
+
+  --container-width: #{rem(1600)};
+  --container-padding-x: #{rem(16)};
+
+  --transition-duration: 0.2s;
+
+  @include laptop {
+    --container-width: #{rem(1280)};
+  }
+}
+

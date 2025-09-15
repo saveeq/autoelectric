@@ -1,0 +1,133 @@
+@use "../helpers" as *;
+
+.header {
+  background-color: transparent;
+  border-bottom: rem(1) solid var(--platinum-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  // Состояние header'а при скролле
+  &--scrolled {
+    background-color: rgba(255, 255, 255, 0.767);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  &__inner {
+    padding-top: rem(16);
+    padding-bottom: rem(16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
+    padding-inline: rem(20);
+    position: relative;
+    transition: justify-content 0.4s ease;
+
+    @include tablet-above {
+      padding-inline: rem(40);
+    }
+
+    @include laptop-above {
+      padding-inline: rem(80);
+    }
+  }
+
+  // При скролле меняем выравнивание на space-between
+  &--scrolled &__inner {
+    @include tablet-above {
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    padding: rem(8);
+    border-radius: rem(10);
+    border: rem(2) solid var(--lavender-color);
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s ease;
+    
+    @include tablet-above {
+      // По умолчанию логотип в центре, при скролле не двигается
+      // Анимация происходит за счет изменения justify-content
+    }
+  }
+
+  // Навигация (скрыта по умолчанию)
+  &__nav {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+    display: none;
+  }
+
+  // Показываем навигацию только при скролле на планшетах и выше
+  &--scrolled &__nav {
+    @include tablet-above {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: rem(32);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include laptop-above {
+      gap: rem(40);
+    }
+  }
+
+  &__nav-item {
+    position: relative;
+  }
+
+  &__nav-link {
+    font-size: rem(16);
+    font-weight: 500;
+    color: var(--night-color);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    padding: rem(8) rem(12);
+    border-radius: rem(6);
+
+    @include laptop-above {
+      font-size: rem(18);
+      padding: rem(10) rem(16);
+    }
+
+    // Подчеркивание при hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: rem(-4);
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 100%;
+      height: rem(2);
+      background-color: var(--true-blue-color);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: var(--true-blue-color);
+      transform: translateY(rem(-2));
+
+      &::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+    }
+  }
+}
